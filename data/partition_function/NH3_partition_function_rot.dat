@@ -1,0 +1,10 @@
+# NH3 partion function copied from https://cdms.astro.uni-koeln.de/cdms/portal/catalog/29/#
+# This is calculated based on JPL data without hyperfines in https://spec.jpl.nasa.gov/ftp/pub/catalog/catform.html (molecular tag = 17002)
+# T [K] Q
+9.375 	5.7365
+18.75 	11.5992
+37.5 	28.0322
+75.0 	75.1383
+150.0 	207.9221
+225.0 	380.3263
+300.0 	588.7816

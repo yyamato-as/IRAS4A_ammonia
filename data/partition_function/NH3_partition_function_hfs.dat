@@ -1,0 +1,13 @@
+# NH3 partion function from https://cdms.astro.uni-koeln.de/classic/predictions/catalog/partition_function.html and converted from log10(Q) to Q by myself
+# number of levels considered: 346
+# hyperfine transitions are considered as in CDMS NH3-wHFS data
+# T [K] Q
+2.725   12.01157618
+5.000   12.53429755
+9.375   17.21075808
+18.75   34.80166322
+37.50   84.10077541
+75.00   225.42392122
+150.0   623.73483548
+225.0   1141.03771632
+300.0   1766.44451274
