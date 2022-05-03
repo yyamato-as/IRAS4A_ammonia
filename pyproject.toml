@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "iras4a_ammonia"
+version = "0.1.0"
+description = ""
+authors = ["yyamato-as <yyamato.as@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.11"
+numpy = "^1.22.3"
+scipy = "^1.8.0"
+matplotlib = "^3.5.1"
+astropy = "^5.0.2"
+ipython = "^8.1.1"
+astroquery = "^0.4.6"
+emcee = "^3.1.1"
+tqdm = "^4.63.1"
+corner = "^2.2.1"
+radio-beam = "^0.3.3"
+
+[tool.poetry.dev-dependencies]
+ipykernel = "^6.9.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,3 @@
+- John doubt the Choi+10 results -> stellar mass is not reliable -> need to reconsider the assumption of LIME calc.
+- John: non-LTE test can go to Appendix? Jes also pointed out this
+- rewrite the summary
