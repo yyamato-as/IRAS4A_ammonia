@@ -19,6 +19,7 @@ radio-beam = "^0.3.3"
 
 [tool.poetry.dev-dependencies]
 ipykernel = "^6.9.2"
+black = {version = "^22.3.0", allow-prereleases = true}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -30,8 +30,8 @@ ylabel = r'$T_\mathrm{b}$ [K]'
 ymax = {'IRAS4A1': 8.5,
 	    'IRAS4A2': 11}
 
-colors = {'OPRfixed': '#1E8FFF',
-         'OPRfree': '#FF4500'}
+colors = {'OPRfixed': "tab:blue",
+         'OPRfree': 'tab:orange'}
 
 beam = {'NH3_33': (1.31, 0.98),
 	    'NH3_44': (1.25, 0.95),
@@ -131,7 +131,7 @@ for i, source in enumerate(sources):
                     pf = NH2D_pf
                 model = modelf(velax=vel_hires,
                                 beam=beam[trans],
-                                invdata=rotdata,
+                                rotdata=rotdata,
                                 hfsdata=hfsdata,
                                 dv_FWHM=dv_FWHM,
                                 pf=pf,
@@ -140,7 +140,7 @@ for i, source in enumerate(sources):
                                 T=Tex,
                                 s=s
                                 )
-                ax.plot(vel_hires, model, color=color, alpha=0.3)
+                ax.plot(vel_hires, model, color=color, alpha=0.3, lw=0.5)
 
         # adjust appearance 
         ax.xaxis.set_major_locator(ticker.MultipleLocator(10))

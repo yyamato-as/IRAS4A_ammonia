@@ -170,9 +170,7 @@ if source == "IRAS4A1":
     source_size_kernel = Gaussian_kernel(0.25, 0.06)
 
 if source == "IRAS4A2":
-    source_size_kernel = Gaussian_kernel(
-    0.30, 0.03
-)  # based on the MCMC fit for peak brightness temperature of our data and Choi's data
+    source_size_kernel = Gaussian_kernel(0.30, 0.03)  # based on the MCMC fit for peak brightness temperature of our data and Choi's data
 
 
 ######## import the spectrum ########
@@ -227,7 +225,7 @@ def log_likelihood(param):
         model = model_func[trans.split("_")[0]](
             velax=velax[trans],
             beam=beam[trans],
-            invdata=rotdata[trans],
+            rotdata=rotdata[trans],
             hfsdata=hfsdata[trans],
             dv_FWHM=dv_FWHM[trans] ,
             v0=v0[trans],
