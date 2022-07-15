@@ -1,4 +1,5 @@
 .venv
 poetry.lock
 data/fit
+data/mom0
 __pycache__
