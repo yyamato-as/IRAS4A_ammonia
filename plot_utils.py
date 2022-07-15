@@ -39,6 +39,10 @@ def get_param_labels(transition, OPR_NH3_free=True):
 
     return param_labels
 
+def get_blob_labels(transition):
+    blob_labels = [r"$\log_{{10}} \tau$ ({:s})".format(trans_label[trans]) for trans in transition]
+    blob_labels += [r"$N$(NH$_2$D)/$N$(NH$_3$)"]
+    return blob_labels
 
 def get_significand_exponent(value):
     exp = len(str(int(value))) - 1
