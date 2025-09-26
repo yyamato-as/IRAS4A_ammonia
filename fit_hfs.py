@@ -95,7 +95,7 @@ bound = {
 
 model_func = {"NH3": NH3_model, "NH2D": NH2D_model}
 
-print("Importing the spectroscopic data...")
+print("Importing spectroscopic data...")
 rotdata = {trans: get_spectroscopic_data(trans, hfs=False) for trans in transition}
 hfsdata = {trans: get_spectroscopic_data(trans, hfs=True) for trans in transition}
 if fit_type == "OPR_fixed":

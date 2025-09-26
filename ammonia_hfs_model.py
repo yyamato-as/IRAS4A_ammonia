@@ -120,3 +120,35 @@ def get_NH2D_tau0(rotdata, dv_FWHM, T, pf, N):
         * N_u
     )
     return tau0
+
+
+def populate_params(param, transition, fit_type):
+    ntrans = len(transition)
+
+    dv_FWHM = {}
+    for i, trans in enumerate(transition):
+        dv_FWHM[trans] = param[i] * u.km / u.s
+
+    v0 = {}
+    for i, trans in enumerate(transition):
+        v0[trans] = param[i + ntrans] * u.km / u.s
+
+    
+
+    if fit_type == "OPR_fixed":
+        logN_NH3, logN_NH2D, T, s = param[2 * ntrans :]
+        N_NH3 = 10**logN_NH3 / u.cm**2
+        N_NH2D = 10**logN_NH2D / u.cm**2
+        N = {trans: N_NH3 if "NH3" in trans else N_NH2D for trans in transition}
+        return dv_FWHM, v0, N, T * u.K, s
+
+    elif fit_type == "OPR_free":
+        logN_NH3, OPR_NH3, logN_NH2D, T, s = param[2 * ntrans :]
+        N_oNH3 = 10**logN_NH3 * OPR_NH3 / (1.0 + OPR_NH3) / u.cm**2
+        N_pNH3 = 10**logN_NH3 * 1.0 / (1.0 + OPR_NH3) / u.cm**2
+        N_NH2D = 10**logN_NH2D / u.cm**2
+        N = {
+            trans: N_oNH3 if trans == "NH3_33" else N_pNH3 if "NH3" in trans else N_NH2D
+            for trans in transition
+        }
+        return dv_FWHM, v0, N, T * u.K, s

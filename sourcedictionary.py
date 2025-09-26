@@ -1,10 +1,10 @@
-source_dict = {'IRAS4A': {'IRAS4A2': {'radec': '03h29m10.4424s +031d13m32.0105s',
+source_dict = {'IRAS4A': {'IRAS4A2': {'radec': '03h29m10.43475s +031d13m32.00371s',
                                         'frame': 'icrs',
                                         'maj_FWHM': 1.204, # arcsec
                                         'min_FWHM': 1.103, # arcsec
                                         'PA': 46 # deg
                                         },
-                          'IRAS4A1': {'radec': '03h29m10.5396s +031d13m30.8933s',
+                          'IRAS4A1': {'radec': '03h29m10.53969s +031d13m30.87806s',
                                         'frame': 'icrs',
                                         'maj_FWHM': 1.155, # arcsec
                                         'min_FWHM': 0.914, # arcsec

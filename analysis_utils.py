@@ -2,12 +2,18 @@ import numpy as np
 import astropy.units as u 
 import astropy.constants as ac
 from astropy.convolution import Gaussian1DKernel, convolve
+from matplotlib import colors
 
 # constants
 c = ac.c
 h = ac.h
 k_B = ac.k_B
 pi = np.pi
+
+# plot colormap
+freeze = np.loadtxt("../qDisk/cmap_freeze.txt")
+freeze /= 255.0
+cpal = colors.ListedColormap(freeze, name="freeze")
 
 def convolve_spectrum(velax, model, width=1*u.km/u.s):
     sigma = FWHM_to_sigma(width)

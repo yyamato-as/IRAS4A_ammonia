@@ -1,12 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import astropy.io.fits as fits
 from sourcedictionary import source_dict
-import astropy.units as u
 from matplotlib import colors, ticker
-from astropy.visualization import LinearStretch, AsinhStretch, LogStretch
-import matplotlib.font_manager as fm
-from scipy import ndimage
 from qdisk.plot import Map
 from qdisk.classes import FitsImage
 from astropy.coordinates import SkyCoord
@@ -22,11 +17,13 @@ freeze /= 255.0
 cpal = colors.ListedColormap(freeze, name="freeze")
 
 transition = ["NH3_11", "NH3_22", "NH3_33", "NH3_44", "NH3_55", "NH2D_33", "NH2D_44"]
-mom0path = "./data/mom0/"
+# mom0path = "./data/mom0_old/"
+mom0path = "/raid/work/yamato/IRAS4A_ammonia/"
 
 # preset
 distance = 300  # in pc
 center_coord = source_dict["IRAS4A"]["IRAS4A2"]["radec"]
+# center_coord = "03h29m10.43475s 31d13m32.00371s"
 xlim = (-2.5, 4)
 ylim = (-4, 2.5)
 
@@ -63,6 +60,13 @@ for i, trans in enumerate(transition):
     dmom0map.shift_phasecenter_toward(center_coord)
     rms = np.nanmedian(dmom0map.data)
     print("mom0 rms: {:.2f} mJy/beam km/s".format(rms))
+
+    # mom0 = FitsImage(mom0name)
+    # mom0.shift_phasecenter_toward(center_coord)
+    # mom0.estimate_rms(rmin=40)
+    # rms = mom0.rms
+    # print("mom0 rms: {:.2f} mJy/beam km/s".format(rms))
+    # print("analytic formula: {:.2f} mJy/beam km/s".format(rms_dmom0))
 
     # plot the mom0 map
     mom0map = Map(mom0name, ax=ax, xlim=xlim, ylim=ylim, center_coord=center_coord)
@@ -107,7 +111,7 @@ for i, trans in enumerate(transition):
         ax.scatter(offset_x.arcsec, offset_y.arcsec, marker='+', color='black', lw=0.5)
 
     # 3sigma contour
-    mom0map.overlay_contour(levels=np.array([3])*rms, color="dimgrey", linestyle="dashed", linewidth=0.5)
+    mom0map.overlay_contour(levels=np.array([3, 6, 9, 12, 15, 18, 21])*rms, color="dimgrey", linestyle="dashed", linewidth=0.5)
 
 
 axes[1, 0].set(xlabel=r'$\Delta\mathrm{R.A.}$ [$^{\prime\prime}$]', ylabel=r'$\Delta\mathrm{Dec.}$ [$^{\prime\prime}$]')
@@ -116,5 +120,7 @@ axes[1, 0].set(xlabel=r'$\Delta\mathrm{R.A.}$ [$^{\prime\prime}$]', ylabel=r'$\D
 # remove empty axis
 for i in range(i + 1, axes.flatten().size):
     axes.flatten()[i].set_axis_off()
+
+# plt.show()
 
 fig.savefig("./figure/moment0_gallery.pdf", bbox_inches="tight", pad_inches=0.01)
